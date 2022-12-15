@@ -5,6 +5,12 @@ message("Using fritzing quazip detect script.")
 SOURCES += \
     src/zlibdummy.c \
 
+packagesExist(quazip1-qt5) {
+    PKGCONFIG += quazip1-qt5
+    message("found quazip using pkg-config")
+    return()
+}
+
 exists($$absolute_path($$PWD/../../quazip_qt5)) {
         QUAZIPPATH = $$absolute_path($$PWD/../../quazip_qt5)
         message("found quazip in $${QUAZIPPATH}")
