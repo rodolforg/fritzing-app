@@ -37,11 +37,14 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 #include <QTextStream>
 #include <qmath.h>
 
-#include <boost/math/special_functions/relative_difference.hpp>
-using boost::math::epsilon_difference;
-
 #include <limits>
 #include <QtConcurrentRun>
+
+// avoids Boost
+qreal epsilon_difference(qreal a, qreal b)
+{
+    return std::fabs((a - b) / std::min(a,b)) / std::numeric_limits<qreal>::epsilon();
+}
 
 // factor for epsion to compare floating point numbers
 // 5 was arbitrary choosen
