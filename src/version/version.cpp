@@ -31,6 +31,15 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
 #include "../debugdialog.h"
 #include "../utils/textutils.h"
 
+#include <QtGlobal>
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+#include <QString>
+
+namespace Qt
+{
+    static auto SkipEmptyParts = QString::SkipEmptyParts;
+}
+#endif
 
 QString Version::m_majorVersion("0");
 QString Version::m_minorVersion("9");

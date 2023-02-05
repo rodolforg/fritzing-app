@@ -17,6 +17,14 @@
 
 #include <src/utils/fmessagebox.h>
 
+#include <QtGlobal>
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+namespace Qt
+{
+    static auto endl = ::endl;
+}
+#endif
+
 //TODO: Fix dialog layout, add image
 //TODO: Request upload url, logo + text at fritzing.org/fab/new
 //TODO: If fab not reachable: Show hint to Aisler and gerber export
