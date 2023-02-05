@@ -22,8 +22,10 @@ lessThan(QT_MAJOR_VERSION, 5) {
     error(Fritzing does not build with Qt 4 or earlier. 5.12 is recommended.)
 }
 
-lessThan(QT_MINOR_VERSION, 9) {
-    error(Fritzing does not build with Qt 5.8 or earlier. 5.12 is recommended.)
+equals(QT_MAJOR_VERSION, 5) {
+    lessThan(QT_MINOR_VERSION, 9) {
+        error(Fritzing does not build with Qt 5.8 or earlier. 5.12 is recommended.)
+    }
 }
 
 CONFIG += debug_and_release
